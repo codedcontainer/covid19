@@ -7,18 +7,18 @@ const unitedStates = require('./US');
     const doc = new GoogleSpreadsheet('1Idoh2NG5IfyvWA8gMGLcpxfG9sUbeiEo6ltPUPVt4Gw');
     await doc.useServiceAccountAuth(require('./credentials.json'));
     await doc.loadInfo();
-    let sheet = doc.sheetsById[0];
+    //let sheet = doc.sheetsById[0];
 
-    unitedStates.getStats().then((stats) => {
-        sheet.addRow(
-            {
-                Date: moment().format('MM/DD/YYYY'),
-                Cases: stats.US.totalPositiveCases,
-                Deaths: stats.US.totalDeaths
-            });
-    });
+    // unitedStates.getStats().then((stats) => {
+    //     sheet.addRow(
+    //         {
+    //             Date: moment().format('MM/DD/YYYY'),
+    //             Cases: stats.US.totalPositiveCases,
+    //             Deaths: stats.US.totalDeaths
+    //         });
+    // });
 
-    sheet2 = doc.sheetsById[953330401];
+    let sheet2 = doc.sheetsById[953330401];
     indiana.getStats().then((stats) => {
         sheet2.addRow(
             {
