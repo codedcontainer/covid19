@@ -2,18 +2,61 @@
 const { Builder, By } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome'); 
 
+function getPercentage(total, percentage){
+  return Math.floor( total * (percentage / 100) ); 
+}
+
+
 async function getStats() {
   let driver = await new Builder().forBrowser('chrome')
 		.setChromeOptions(new chrome.Options().headless())
 		.build();
   await driver.get("https://www.coronavirus.in.gov/map-test/test.htm");
-  const totalPositiveCases = await driver.findElement(By.css(".m-stats-cards-card-wrapper:nth-child(4) .h1")).getText();
-  const totalDeaths = await driver.findElement(By.css(".m-stats-cards-card-wrapper:nth-child(5) .h1")).getText();
+  let totalPositiveCases = await driver.findElement(By.css(".m-stats-cards-card-wrapper:nth-child(4) .h1")).getText();
+  let totalDeaths = await driver.findElement(By.css(".m-stats-cards-card-wrapper:nth-child(5) .h1")).getText();
+  let totalTested = await driver.findElement(By.css(".d-block:nth-child(1)")).getText(); 
+  let icuBedCapacity = await driver.findElement(By.css("#beds-chart .recharts-layer:nth-child(1) > .recharts-layer:nth-child(1) text:nth-child(1)")).getText();  
+  let availableIcuBeds = await driver.findElement(By.css("#beds-chart .card-inner-card:nth-child(1) .h4")).getText();
+  let usedCovidIcuBeds = await driver.findElement(By.css("#beds-chart .card-inner-card:nth-child(2) .h4")).getText();
+  let usedNonCovidIcuBeds = await driver.findElement(By.css("#beds-chart .card-inner-card:nth-child(3) .h4")).getText();
+  let ventsCapacity = await driver.findElement(By.css("#ventilators-chart .recharts-layer:nth-child(1) > .recharts-layer:nth-child(1) text:nth-child(1)")).getText();
+  let availableVents = await driver.findElement(By.css("#ventilators-chart .card-inner-card:nth-child(1) .h4")).getText(); 
+  let usedCovidVents = await driver.findElement(By.css("#ventilators-chart .card-inner-card:nth-child(2) .h4")).getText(); 
+  let usedNonCovidVents = await driver.findElement(By.css("#ventilators-chart .card-inner-card:nth-child(3) .h4")).getText();  
+  
+  totalPositiveCases = totalPositiveCases.replace(',',''); 
+  totalTested = totalTested.replace(',','');   
+  
+  icuBedCapacity = icuBedCapacity.replace(',', '');  
+  availableIcuBeds = availableIcuBeds.replace('%', ''); 
+    availableIcuBeds = getPercentage(icuBedCapacity, availableIcuBeds); 
+  usedCovidIcuBeds = usedCovidIcuBeds.replace('%',''); 
+    usedCovidIcuBeds = getPercentage(icuBedCapacity, usedCovidIcuBeds)
+  usedNonCovidIcuBeds = usedNonCovidIcuBeds.replace('%', ''); 
+    usedNonCovidIcuBeds = getPercentage(icuBedCapacity, usedNonCovidIcuBeds)
+    
+  ventsCapacity = ventsCapacity.replace(',', ''); 
+  availableVents = availableVents.replace('%', ''); 
+    availableVents = getPercentage(ventsCapacity, availableVents)
+  usedCovidVents = usedCovidVents.replace('%', ''); 
+    usedCovidVents = getPercentage(ventsCapacity, usedCovidVents)
+  usedNonCovidVents = usedNonCovidVents.replace('%', ''); 
+    usedNonCovidVents = getPercentage(ventsCapacity, usedNonCovidVents)
+  
   driver.close();
   return {
     'IN': {
       totalPositiveCases,
-      totalDeaths
+      totalDeaths,
+      totalTested,
+      icuBedCapacity,
+      availableIcuBeds,
+      usedCovidIcuBeds,
+      usedNonCovidIcuBeds,
+      ventsCapacity,
+      availableVents,
+      usedCovidVents,
+      usedNonCovidVents
     }
   };
 }

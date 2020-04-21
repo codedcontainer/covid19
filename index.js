@@ -12,19 +12,28 @@ const unitedStates = require('./US');
      unitedStates.getStats().then((stats) => {
          sheet.addRow(
              {
-                 Date: moment().format('MM/DD/YYYY'),
-                 Cases: stats.US.totalPositiveCases,
-                 Deaths: stats.US.totalDeaths
+                 "Date": moment().format('MM/DD/YYYY'),
+                 "Cases": stats.US.totalPositiveCases,
+                 "Deaths": stats.US.totalDeaths
              });
      });
 
     let sheet2 = doc.sheetsById[953330401];
-    indiana.getStats().then((stats) => {
+    indiana.getStats().then((stats) => {   
         sheet2.addRow(
             {
-                Date: moment().format('MM/DD/YYYY'),
-                Cases: stats.IN.totalPositiveCases,
-                Deaths: stats.IN.totalDeaths
+                "Date": moment().format('MM/DD/YYYY'),
+                "Cases": stats.IN.totalPositiveCases,
+                "Deaths": stats.IN.totalDeaths,
+                "Total Tested": stats.IN.totalTested,
+                "ICU Bed Capacity": stats.IN.icuBedCapacity,
+                "Available ICU Beds": stats.IN.availableIcuBeds,                
+                "Used COVID ICU Beds": stats.IN.usedCovidIcuBeds,
+                "Non-COVID ICU Beds": stats.IN.usedNonCovidIcuBeds,
+                "Vents Capacity": stats.IN.ventsCapacity,
+                "Available Vents": stats.IN.availableVents,
+                "Used Covid Vents": stats.IN.usedCovidVents,
+                "Used Non-Covid Vents": stats.IN.usedNonCovidVents
             });
     });
 })();
