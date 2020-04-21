@@ -7,7 +7,8 @@ Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves t
 3. Create a new Google Spreadsheet doc with two sheets (u.s., indiana)
 4. Follow the authentication service account steps: https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
 5. Save credentials from Google API to `./credentials.json`
-6. Go to document share > share with service email address
+6. Replace Google sheet ID in `./index.json`
+7. Go to document share > share with service email address
 
 ## Resources ##
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
