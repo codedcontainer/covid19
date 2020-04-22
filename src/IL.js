@@ -40,7 +40,7 @@ async function setStats(doc, sheetId)
             "Date": moment().format('MM/DD/YYYY'),
             "Cases": stats.IL.totalPositiveCases,
             "Deaths": stats.IL.totalDeaths,
-            "Tests Performed": stats.IL.totalTested
+            "Tested": stats.IL.totalTested
         });
     });
 }
