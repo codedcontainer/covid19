@@ -2,7 +2,7 @@
   "id": "8ed72aa8-e055-452d-a340-77db85d9e164",
   "version": "2.0",
   "name": "Covid19",
-  "url": "https://coronavirus.illinois.gov/s/",
+  "url": "https://www.michigan.gov/Coronavirus",
   "tests": [{
     "id": "16d2df94-e610-46f9-b9fb-a819962d7963",
     "name": "IL",
@@ -150,6 +150,64 @@
       "targets": [],
       "value": "usedNonCovidVents"
     }]
+  }, {
+    "id": "e6ef1c96-cbd3-4dd5-ab96-2b9b61792e65",
+    "name": "MI",
+    "commands": [{
+      "id": "945a1c88-6a4a-4df2-b701-4e6484b47227",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.michigan.gov/Coronavirus",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d7005ec0-7e6e-4435-b269-0f2a8b9c195c",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-text:nth-child(2)",
+      "targets": [
+        ["css=.stats-text:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='comp_115280']/ul/li/span/span/span[2]/section/p[2]", "xpath:idRelative"],
+        ["xpath=//section/p[2]", "xpath:position"],
+        ["xpath=//p[contains(.,'32,967')]", "xpath:innerText"]
+      ],
+      "value": "positiveCases"
+    }, {
+      "id": "739c16b2-5564-42d1-8ba3-c362c519cb0b",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-text:nth-child(4)",
+      "targets": [
+        ["css=.stats-text:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='comp_115280']/ul/li/span/span/span[2]/section/p[4]", "xpath:idRelative"],
+        ["xpath=//section/p[4]", "xpath:position"],
+        ["xpath=//p[contains(.,'2,700')]", "xpath:innerText"]
+      ],
+      "value": "totalDeaths"
+    }, {
+      "id": "1e9628be-f31c-45b6-ba25-9532e40881e6",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-text:nth-child(6)",
+      "targets": [
+        ["css=.stats-text:nth-child(6)", "css:finder"],
+        ["xpath=//div[@id='comp_115280']/ul/li/span/span/span[2]/section/p[6]", "xpath:idRelative"],
+        ["xpath=//p[6]", "xpath:position"]
+      ],
+      "value": "dailyCases"
+    }, {
+      "id": "52576228-9fd2-4209-a125-d8a0ba1d25c3",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-text:nth-child(8)",
+      "targets": [
+        ["css=.stats-text:nth-child(8)", "css:finder"],
+        ["xpath=//div[@id='comp_115280']/ul/li/span/span/span[2]/section/p[8]", "xpath:idRelative"],
+        ["xpath=//p[8]", "xpath:position"],
+        ["xpath=//p[contains(.,'232*')]", "xpath:innerText"]
+      ],
+      "value": "dailyDeaths"
+    }]
   }],
   "suites": [{
     "id": "33e19a42-6d1a-4df6-ae6b-98c1543d31d6",
@@ -159,6 +217,6 @@
     "timeout": 300,
     "tests": ["16d2df94-e610-46f9-b9fb-a819962d7963"]
   }],
-  "urls": ["https://coronavirus.illinois.gov/s/"],
+  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus"],
   "plugins": []
 }
