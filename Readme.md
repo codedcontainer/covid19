@@ -15,7 +15,7 @@ Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves t
 | State | Project Type | Code |
 |-------|--------------|------|
 |AL     |
-|AK     |
+|AK     |Postman	| No	|
 |AZ     |
 |AR     |
 |CA     |
