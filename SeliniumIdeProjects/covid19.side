@@ -2,7 +2,7 @@
   "id": "8ed72aa8-e055-452d-a340-77db85d9e164",
   "version": "2.0",
   "name": "Covid19",
-  "url": "https://www.michigan.gov/Coronavirus",
+  "url": "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home",
   "tests": [{
     "id": "16d2df94-e610-46f9-b9fb-a819962d7963",
     "name": "IL",
@@ -208,6 +208,83 @@
       ],
       "value": "dailyDeaths"
     }]
+  }, {
+    "id": "190e40f8-353b-43cb-b5be-67a5b757d5ac",
+    "name": "OH",
+    "commands": [{
+      "id": "d977a1b9-6c6f-49f2-bcb4-393efcf15e03",
+      "comment": "",
+      "command": "open",
+      "target": "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "78bb1a51-9624-4331-a873-81269be06fb8",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(1) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(1) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//article/section/div/div/div/div", "xpath:position"]
+      ],
+      "value": "positiveCases"
+    }, {
+      "id": "eea74445-f191-4895-b01a-c5f6eb37afbc",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(3) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(3) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//section/div/div/div[3]/div", "xpath:position"]
+      ],
+      "value": "totalCases"
+    }, {
+      "id": "2819ba5a-abea-44b7-8351-8388f8cf4c00",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(4) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(4) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div[4]/div", "xpath:idRelative"],
+        ["xpath=//section/div/div/div[4]/div", "xpath:position"]
+      ],
+      "value": "totalHospitalizations"
+    }, {
+      "id": "f1fdf586-5139-403e-a89c-9225f0207583",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(5) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(5) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div[5]/div", "xpath:idRelative"],
+        ["xpath=//div/div[5]/div", "xpath:position"]
+      ],
+      "value": "confirmedDeaths"
+    }, {
+      "id": "6eab1889-1ea6-46a4-bc02-5f398d4aa125",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(7) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(7) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div[7]/div", "xpath:idRelative"],
+        ["xpath=//div/div[7]/div", "xpath:position"]
+      ],
+      "value": "totalDeaths"
+    }, {
+      "id": "45fc74ea-a4f4-402f-a6f7-9d0697e74b54",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.stats-cards__item:nth-child(8) > .stats-cards__number",
+      "targets": [
+        ["css=.stats-cards__item:nth-child(8) > .stats-cards__number", "css:finder"],
+        ["xpath=//main[@id='odx-main-content']/article/section/div/div/div[8]/div", "xpath:idRelative"],
+        ["xpath=//div/div[8]/div", "xpath:position"]
+      ],
+      "value": "icuAdmissions"
+    }]
   }],
   "suites": [{
     "id": "33e19a42-6d1a-4df6-ae6b-98c1543d31d6",
@@ -217,6 +294,6 @@
     "timeout": 300,
     "tests": ["16d2df94-e610-46f9-b9fb-a819962d7963"]
   }],
-  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus"],
+  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus", "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home"],
   "plugins": []
 }
