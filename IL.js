@@ -45,5 +45,4 @@ async function setStats(doc, sheetId)
     });
 }
 
-
 module.exports.setStats = setStats; 

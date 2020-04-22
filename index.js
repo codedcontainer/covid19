@@ -1,8 +1,6 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const moment = require('moment');
 const IN = require('./IN');
 const IL = require('./IL'); 
-
 const US = require('./US');
 
 (async () => {
@@ -14,5 +12,3 @@ const US = require('./US');
     await IN.setStats(doc, 953330401); 
     await IL.setStats(doc, 913962604); 
 })();
-
-
