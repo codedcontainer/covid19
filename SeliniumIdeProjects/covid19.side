@@ -1,49 +1,164 @@
 {
-  "id": "469a1a21-ec5c-44fb-96ae-3e5c5e7be0fa",
+  "id": "8ed72aa8-e055-452d-a340-77db85d9e164",
   "version": "2.0",
-  "name": "Indiana Covid-19",
-  "url": "https://www.coronavirus.in.gov/map-test/test.htm",
+  "name": "Covid19",
+  "url": "https://coronavirus.illinois.gov/s/",
   "tests": [{
-    "id": "f5edd405-ca77-49c9-89de-8a9ac7ec82e1",
-    "name": "index",
+    "id": "16d2df94-e610-46f9-b9fb-a819962d7963",
+    "name": "IL",
     "commands": [{
-      "id": "157e2d10-4215-4fd0-8cd3-edf5bf151d2f",
+      "id": "d135830e-505d-42c8-8150-af0bde842a52",
+      "comment": "",
+      "command": "open",
+      "target": "https://coronavirus.illinois.gov/s/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "de1292fb-8d82-4aa8-a33c-7475caa52220",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.slds-max-small-size_12-of-12:nth-child(1) lightning-formatted-number",
+      "targets": [],
+      "value": "positiveCases"
+    }, {
+      "id": "7cb481e7-33e1-43e9-aad5-6f850d91f28d",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.slds-max-small-size_12-of-12:nth-child(2) lightning-formatted-number",
+      "targets": [],
+      "value": "deaths"
+    }, {
+      "id": "31aedaf6-c592-49df-8d62-f31fdb8145a9",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.slds-max-small-size_12-of-12:nth-child(3) lightning-formatted-number",
+      "targets": [],
+      "value": "totalTests"
+    }]
+  }, {
+    "id": "80f70a02-671a-4978-ab82-8bfbb6ebe3cf",
+    "name": "IN",
+    "commands": [{
+      "id": "1224157d-eae3-4896-9e20-ff55ba015116",
       "comment": "",
       "command": "open",
       "target": "https://www.coronavirus.in.gov/map-test/test.htm",
       "targets": [],
       "value": ""
     }, {
-      "id": "707fc8df-8603-4368-aaf4-3d845fe28065",
+      "id": "9d444d3b-4d97-44ae-94b3-5595033428c1",
       "comment": "",
       "command": "storeText",
-      "target": "id=total_pt",
-      "targets": [],
-      "value": "totalPositiveCases"
+      "target": "css=.m-stats-cards-card-wrapper:nth-child(1) .h1",
+      "targets": [
+        ["css=.m-stats-cards-card-wrapper:nth-child(1) .h1", "css:finder"],
+        ["xpath=//div[@id='main-content']/div/div/div/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'431')]", "xpath:innerText"]
+      ],
+      "value": "positiveCases"
     }, {
-      "id": "d35df918-15eb-42d6-802e-7c1de2081eff",
+      "id": "afb6439a-8db1-41fe-86a0-0e3e060da2fd",
       "comment": "",
       "command": "storeText",
-      "target": "id=deaths",
-      "targets": [],
+      "target": "css=.m-stats-cards-card-wrapper:nth-child(5) .h1",
+      "targets": [
+        ["css=.m-stats-cards-card-wrapper:nth-child(5) .h1", "css:finder"],
+        ["xpath=//div[@id='main-content']/div/div[5]/div/h2", "xpath:idRelative"],
+        ["xpath=//div[5]/div/h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'630')]", "xpath:innerText"]
+      ],
       "value": "totalDeaths"
     }, {
-      "id": "8b781c75-35fa-4ff8-aed6-3d787801d598",
+      "id": "e5932b74-fb6f-43c9-aa13-45212ccb8949",
       "comment": "",
-      "command": "store",
-      "target": "id=totalTests",
-      "targets": [],
+      "command": "storeText",
+      "target": "css=.d-block:nth-child(1)",
+      "targets": [
+        ["css=.d-block:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='main-content']/div/div[6]/div/h2/span", "xpath:idRelative"],
+        ["xpath=//h2/span", "xpath:position"],
+        ["xpath=//span[contains(.,'67,264')]", "xpath:innerText"]
+      ],
       "value": "totalTested"
+    }, {
+      "id": "4cb56cdc-dee7-4e11-b2e6-8051af77e3e7",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#beds-chart .recharts-layer:nth-child(1) > .recharts-layer:nth-child(1) text:nth-child(1)",
+      "targets": [
+        ["css=.recharts-layer:nth-child(1) > g > text:nth-child(1)", "css:finder"]
+      ],
+      "value": "icuBedCapacity"
+    }, {
+      "id": "d6864345-4808-4745-812d-40cc823eae78",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#beds-chart .card-inner-card:nth-child(1) .h4",
+      "targets": [
+        ["css=#beds-chart .card-inner-card:nth-child(1) .h4", "css:finder"],
+        ["xpath=//div[@id='beds-chart']/div[2]/div/div/p/span", "xpath:idRelative"],
+        ["xpath=//p/span", "xpath:position"],
+        ["xpath=//span[contains(.,'47.4%')]", "xpath:innerText"]
+      ],
+      "value": "availableIcuBeds"
+    }, {
+      "id": "93c3063d-d485-4733-9e3b-bcd6e85c30bd",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#beds-chart .card-inner-card:nth-child(2) .h4",
+      "targets": [
+        ["css=#beds-chart .card-inner-card:nth-child(2) .h4", "css:finder"],
+        ["xpath=//div[@id='beds-chart']/div[2]/div/div[2]/p/span", "xpath:idRelative"],
+        ["xpath=//div[2]/p/span", "xpath:position"],
+        ["xpath=//span[contains(.,'22.5%')]", "xpath:innerText"]
+      ],
+      "value": "usedCovidIcuBeds"
+    }, {
+      "id": "d8ee06cd-6e77-4988-b98c-c7c04b0e3ab3",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#beds-chart .card-inner-card:nth-child(3) .h4",
+      "targets": [],
+      "value": "usedNonCovidIcuBeds"
+    }, {
+      "id": "a2f596a3-15c5-4df8-819d-3fe6f1941fea",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ventilators-chart .recharts-layer:nth-child(1) > .recharts-layer:nth-child(1) text:nth-child(1)",
+      "targets": [],
+      "value": "ventsCapacity"
+    }, {
+      "id": "39d7f17c-a8db-40c5-bab5-94e4c077871c",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ventilators-chart .card-inner-card:nth-child(1) .h4",
+      "targets": [],
+      "value": "availableVents"
+    }, {
+      "id": "3bd3079f-8b6d-4969-9ab2-e57206e8bdb3",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ventilators-chart .card-inner-card:nth-child(2) .h4",
+      "targets": [],
+      "value": "usedCovidVents"
+    }, {
+      "id": "48281db3-d536-4fd6-97c4-5b33c1225faa",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ventilators-chart .card-inner-card:nth-child(3) .h4",
+      "targets": [],
+      "value": "usedNonCovidVents"
     }]
   }],
   "suites": [{
-    "id": "28e98ec8-fd79-4489-bae4-b1f4d7d6527b",
+    "id": "33e19a42-6d1a-4df6-ae6b-98c1543d31d6",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["f5edd405-ca77-49c9-89de-8a9ac7ec82e1"]
+    "tests": ["16d2df94-e610-46f9-b9fb-a819962d7963"]
   }],
-  "urls": ["https://www.coronavirus.in.gov/map-test/test.htm"],
+  "urls": ["https://coronavirus.illinois.gov/s/"],
   "plugins": []
 }
