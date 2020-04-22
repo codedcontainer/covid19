@@ -14,7 +14,7 @@ Grabs stats about number of cases, deaths, and more for the United States and in
 ## State Tracker ##
 | State | Project Type | Code |
 |-------|--------------|------|
-|AL     |
+|AL     |API
 |AK     |Postman	| No	|
 |AZ     |
 |AR     |
