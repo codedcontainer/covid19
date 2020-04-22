@@ -1,5 +1,5 @@
 # United States Covid19 Stats To Google Spreadsheets #
-Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves these to a Google Spreadsheet
+Grabs stats about number of cases, deaths, and more for the United States and individual states. After returning data the data is saved into a private Google spreadsheet.
 
 ## Getting Started ##
 1. Install Salenium Web Driver for your os
