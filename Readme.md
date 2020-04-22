@@ -11,6 +11,11 @@ Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves t
 7. Replace Google sheet ID in `./index.json`
 8. Go to document share > share with service email address
 
+## Data ##
+- WI: API https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/3/query?where=1%3D1&outFields=POSITIVE,NEGATIVE,DEATHS,&outSR=4326&f=json&returnGeometry=false
+- MI: https://www.michigan.gov/Coronavirus
+- OH: https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home
+
 ## Resources ##
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
 	- `sudo apt install nodejs`
