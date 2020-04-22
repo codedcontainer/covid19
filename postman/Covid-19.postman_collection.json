@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "5c4d8fad-f91d-4379-8685-e3cbf3b337f5",
+		"name": "Covid-19",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Routes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "United States Confirmed Cases",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/country/united-states/status/confirmed",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"country",
+						"united-states",
+						"status",
+						"confirmed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "United States Deaths",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/country/united-states/status/deaths",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"country",
+						"united-states",
+						"status",
+						"deaths"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "United States Recovered",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.covid19api.com/total/country/united-states/status/recovered",
+					"protocol": "https",
+					"host": [
+						"api",
+						"covid19api",
+						"com"
+					],
+					"path": [
+						"total",
+						"country",
+						"united-states",
+						"status",
+						"recovered"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WI",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/3/query?where=1%3D1&outFields=POSITIVE,NEGATIVE,DEATHS,&outSR=4326&f=json&returnGeometry=false",
+					"protocol": "https",
+					"host": [
+						"services1",
+						"arcgis",
+						"com"
+					],
+					"path": [
+						"ISZ89Z51ft1G16OK",
+						"ArcGIS",
+						"rest",
+						"services",
+						"COVID19_WI",
+						"FeatureServer",
+						"3",
+						"query"
+					],
+					"query": [
+						{
+							"key": "where",
+							"value": "1%3D1"
+						},
+						{
+							"key": "outFields",
+							"value": "POSITIVE,NEGATIVE,DEATHS,"
+						},
+						{
+							"key": "outSR",
+							"value": "4326"
+						},
+						{
+							"key": "f",
+							"value": "json"
+						},
+						{
+							"key": "returnGeometry",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.health.state.mn.us/diseases/coronavirus/situation.html",
+					"protocol": "https",
+					"host": [
+						"www",
+						"health",
+						"state",
+						"mn",
+						"us"
+					],
+					"path": [
+						"diseases",
+						"coronavirus",
+						"situation.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://health.mo.gov/living/healthcondiseases/communicable/novel-coronavirus/",
+					"protocol": "https",
+					"host": [
+						"health",
+						"mo",
+						"gov"
+					],
+					"path": [
+						"living",
+						"healthcondiseases",
+						"communicable",
+						"novel-coronavirus",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dfeb26f2-919e-4c03-91b0-5b251586c964",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "35d741f3-463e-4764-a9b2-e5f753f2065a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
