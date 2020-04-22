@@ -1,0 +1,49 @@
+{
+  "id": "469a1a21-ec5c-44fb-96ae-3e5c5e7be0fa",
+  "version": "2.0",
+  "name": "Indiana Covid-19",
+  "url": "https://www.coronavirus.in.gov/map-test/test.htm",
+  "tests": [{
+    "id": "f5edd405-ca77-49c9-89de-8a9ac7ec82e1",
+    "name": "index",
+    "commands": [{
+      "id": "157e2d10-4215-4fd0-8cd3-edf5bf151d2f",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.coronavirus.in.gov/map-test/test.htm",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "707fc8df-8603-4368-aaf4-3d845fe28065",
+      "comment": "",
+      "command": "storeText",
+      "target": "id=total_pt",
+      "targets": [],
+      "value": "totalPositiveCases"
+    }, {
+      "id": "d35df918-15eb-42d6-802e-7c1de2081eff",
+      "comment": "",
+      "command": "storeText",
+      "target": "id=deaths",
+      "targets": [],
+      "value": "totalDeaths"
+    }, {
+      "id": "8b781c75-35fa-4ff8-aed6-3d787801d598",
+      "comment": "",
+      "command": "store",
+      "target": "id=totalTests",
+      "targets": [],
+      "value": "totalTested"
+    }]
+  }],
+  "suites": [{
+    "id": "28e98ec8-fd79-4489-bae4-b1f4d7d6527b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f5edd405-ca77-49c9-89de-8a9ac7ec82e1"]
+  }],
+  "urls": ["https://www.coronavirus.in.gov/map-test/test.htm"],
+  "plugins": []
+}
