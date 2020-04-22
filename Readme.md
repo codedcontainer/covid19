@@ -1,4 +1,4 @@
-# Covid19 => Google Spreadsheet #
+# United States Covid19 Stats To Google Spreadsheets #
 Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves these to a Google Spreadsheet
 
 ## Getting Started ##
@@ -11,9 +11,58 @@ Grabs stats from the CDC website and the Indiana Coronavirus webpage and saves t
 7. Replace Google sheet ID in `./index.json`
 8. Go to document share > share with service email address
 
-## Data ##
-- WI: API https://services1.arcgis.com/ISZ89Z51ft1G16OK/ArcGIS/rest/services/COVID19_WI/FeatureServer/3/query?where=1%3D1&outFields=POSITIVE,NEGATIVE,DEATHS,&outSR=4326&f=json&returnGeometry=false
-- MN: Request https://www.health.state.mn.us/diseases/coronavirus/situation.html
+## State Tracker ##
+| State | Project Type | Code |
+|-------|--------------|------|
+|AL     |
+|AK     |
+|AZ     |
+|AR     |
+|CA     |
+|CO     |
+|CT     |
+|DE     |
+|FL     |
+|GA     |
+|HI     |
+|ID     |
+|IL     |Salenium	| Yes	|
+|IN     |Salenium	| Yes	|
+|IA     |Salenium	| No	|
+|KS     |
+|KY     |
+|LA     |
+|ME     |
+|MD     |
+|MA     |
+|MI     |Salenium	| No	|
+|MN     |Postman	| No	|
+|MS     |
+|MO     |Postman	| No	|
+|MT     |
+|NE     |
+|NV     |
+|NH     |
+|NJ     |
+|NY     |
+|NC     |
+|ND     |
+|OH     |Salenium	| No	|
+|OK     |
+|OR     |
+|PA     |
+|RI     |
+|SC     |
+|SD     |
+|TN     |
+|TX     |
+|UT     |
+|VT     |
+|VA     |
+|WA     |
+|WV     |
+|WI     |Postman	| No	|
+|WY     |
 
 ## Resources ##
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
