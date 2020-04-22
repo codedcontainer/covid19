@@ -2,7 +2,7 @@
   "id": "8ed72aa8-e055-452d-a340-77db85d9e164",
   "version": "2.0",
   "name": "Covid19",
-  "url": "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home",
+  "url": "https://coronavirus.iowa.gov/pages/access",
   "tests": [{
     "id": "16d2df94-e610-46f9-b9fb-a819962d7963",
     "name": "IL",
@@ -285,6 +285,89 @@
       ],
       "value": "icuAdmissions"
     }]
+  }, {
+    "id": "adc2d376-73b8-4b54-8570-f48cc35fc178",
+    "name": "IA",
+    "commands": [{
+      "id": "72137302-1b37-4773-b5db-3e1031f1b5e5",
+      "comment": "",
+      "command": "open",
+      "target": "https://coronavirus.iowa.gov/pages/access",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3125ebf0-a96c-4e7a-9588-9ae254da213a",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember36 .ss-value",
+      "targets": [
+        ["css=#ember36 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember36']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//section[2]/div/div/div/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'3,641')]", "xpath:innerText"]
+      ],
+      "value": "positiveCases"
+    }, {
+      "id": "3ee6e4e5-aad2-4fa6-9f57-f6e97d49b913",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember39 .ss-value",
+      "targets": [
+        ["css=#ember39 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember39']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//section[2]/div/div/div[2]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'83')]", "xpath:innerText"]
+      ],
+      "value": "totalDeaths"
+    }, {
+      "id": "898d9112-6d7a-4f85-94f2-ec2bb57c07a5",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember42 .ss-value",
+      "targets": [
+        ["css=#ember42 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember42']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'214')]", "xpath:innerText"]
+      ],
+      "value": "totalHospitalized"
+    }, {
+      "id": "213129d4-3377-4626-9829-ab1e934eb1f8",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember39 .ss-value",
+      "targets": [
+        ["css=#ember39 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember39']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//section[2]/div/div/div[2]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'83')]", "xpath:innerText"]
+      ],
+      "value": "totalDeaths"
+    }, {
+      "id": "164dbf5e-d9e0-46ab-8713-afa0411b309b",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember45 .ss-value",
+      "targets": [
+        ["css=#ember45 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember45']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'1,293')]", "xpath:innerText"]
+      ],
+      "value": "totalRecovering"
+    }, {
+      "id": "d97fdf59-23aa-4699-845b-e2fe13912d8b",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#ember73 .ss-value",
+      "targets": [
+        ["css=#ember73 .ss-value", "css:finder"],
+        ["xpath=//div[@id='ember73']/div[2]/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div[4]/div/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'27,615')]", "xpath:innerText"]
+      ],
+      "value": "totalTested"
+    }]
   }],
   "suites": [{
     "id": "33e19a42-6d1a-4df6-ae6b-98c1543d31d6",
@@ -294,6 +377,6 @@
     "timeout": 300,
     "tests": ["16d2df94-e610-46f9-b9fb-a819962d7963"]
   }],
-  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus", "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home"],
+  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus", "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home", "https://mn.gov/covid19/", "https://coronavirus.iowa.gov/pages/access"],
   "plugins": []
 }
