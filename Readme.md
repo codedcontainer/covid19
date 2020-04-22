@@ -18,3 +18,4 @@ Grabs stats about number of cases, deaths, and more for the United States and in
 	- Linux Path to chromedriver: `/usr/lib/chromium-browser/chromedriver`
 - [How to execute node chron job](https://stackoverflow.com/questions/5849402/how-can-you-execute-a-node-js-script-via-a-cron-job#5849463)
 - [cromedriver headless](https://stackoverflow.com/questions/44197253/headless-automation-with-nodejs-selenium-webdriver#48677891)
+- [Spreadhseet convert unix to short date time](https://stackoverflow.com/questions/46130132/converting-unix-time-into-date-time-via-excel#48617380)
