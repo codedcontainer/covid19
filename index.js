@@ -1,17 +1,16 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const IN = require('./src/IN');
-const IL = require('./src/IL'); 
 const US = require('./src/US');
 const state = require('./src/Api'); 
 
 (async () => {
     const doc = new GoogleSpreadsheet('1Idoh2NG5IfyvWA8gMGLcpxfG9sUbeiEo6ltPUPVt4Gw');
-    await doc.useServiceAccountAuth(require('./src/credentials.json'));
+    await doc.useServiceAccountAuth(require('./credentials.json'));
     await doc.loadInfo();
 
     await US.setStats(doc, 0); 
     await IN.setStats(doc, 953330401); 
-    await IL.setStats(doc, 913962604); 
+    await state.setStats(doc, 'IL', 913962604); 
     await state.setStats(doc, 'AL', 1253988439);
     await state.setStats(doc, 'AK', 1745951127);
     await state.setStats(doc, 'AR', 163775774);
@@ -68,6 +67,5 @@ const state = require('./src/Api');
     await state.setStats(doc, 'WA', 997316596);
     await state.setStats(doc, 'WI', 59504538);
     await state.setStats(doc, 'WV', 2072403078);
-    await state.setStats(doc, 'WY', 542740656);    
- 
+    await state.setStats(doc, 'WY', 542740656);   
 })();
