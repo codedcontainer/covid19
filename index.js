@@ -11,7 +11,7 @@ const sheets = require('./src/sheets.json');
 
     await US.setStats(doc, 0); 
     await IN.setStats(doc, 953330401);
-    
+
     sheets.forEach(sheet => {
         await api.setStats(doc, sheet.state, sheet.sheetId); 
     });  

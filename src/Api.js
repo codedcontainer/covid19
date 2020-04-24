@@ -23,11 +23,11 @@ async function getLastRow(doc, sheetId){
 async function setStats(doc, state, sheetId)
 {
     let sheet = doc.sheetsById[sheetId];
-
+    console.log('setStat')
     fetch('http://coronavirusapi.com/getTimeSeries/'+state)
     .then(res => res.text())
     .then(body=> csvToJson(body).then((json) =>{
-        const jsonToday = today(json);  
+        const jsonToday = today(json);
         if(jsonToday != null){  
         sheet.addRow({
             "Date": moment().format('MM/DD/YYYY'),
