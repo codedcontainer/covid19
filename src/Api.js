@@ -2,6 +2,24 @@ const csv = require('csvtojson');
 const fetch = require('node-fetch'); 
 const moment = require('moment');
 
+
+async function getRows(doc, sheetId){
+    const sheet = doc.sheetsById[sheetId]; 
+    const rows = await sheet.getRows(); 
+    return rows; 
+}
+
+async function getRowCount(doc, sheetId){
+    const rows = await getRows(doc,sheetId); 
+    return rows.length + 1; 
+}
+
+async function getLastRow(doc, sheetId){
+    const rows = await getRows(doc,sheetId); 
+    const rowCount = await getRowCount(doc,sheetId); 
+    return rows[rowCount - 1];
+}
+
 async function setStats(doc, state, sheetId)
 {
     let sheet = doc.sheetsById[sheetId];
@@ -42,6 +60,11 @@ async function csvToJson(text){
     });
 }
 
-module.exports.setStats = setStats; 
+
+module.exports ={
+    setStats, 
+    getLastRow,
+    getRowCount
+}
 
 
