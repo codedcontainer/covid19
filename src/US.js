@@ -19,14 +19,20 @@ async function getLastObject(obj)
     });
 }
 
+async function apiRequest(url, type){
+    return fetch(url + type)
+    .then((response)=>{
+        return toJson(response.body); 
+    }); 
+}
+
 async function getStats()
-{
-    let confirmed = await request('https://api.covid19api.com/total/country/united-states/status/confirmed');
-    let json = await toJson(confirmed.body);
-    let totalPositiveCases = await getLastObject(json);
-    let deaths = await request('https://api.covid19api.com/total/country/united-states/status/deaths');
-    let json2 = await toJson(deaths.body);
-    let totalDeaths = await getLastObject(json2);
+{  
+    const baseUrl = "https://api.covid19api.com/total/country/united-states/status/"; 
+    let totalPositiveCases = await apiRequest(`${baseUrl}`, 'confirmed');
+    totalPositiveCases = await getLastObject(totalPositiveCases);  
+    let totalDeaths = await apiRequest(`${baseUrl}`,'deaths');
+    totalDeaths = await getLastObject(totalDeaths); 
 
     return {
         'US': {
