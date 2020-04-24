@@ -55,7 +55,8 @@ async function getTodaysRecord(state){
 
 async function setStats(doc, state, sheetId)
 {
-    let record = await getTodaysRecord(doc,state,sheetId); 
+    let record = await getTodaysRecord(state); 
+    const sheet = doc.sheetsById[sheetId]; 
         if(record != null){  
         sheet.addRow({
             "Date": moment().format('MM/DD/YYYY'),

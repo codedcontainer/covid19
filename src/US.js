@@ -1,14 +1,5 @@
-const request = require('async-request');
 const moment = require('moment');
-
-async function toJson(string)
-{
-    return new Promise((resolve, reject) =>
-    {
-        if (string == null) return reject('type is not a string');
-        return resolve(JSON.parse(string));
-    });
-}
+const fetch = require('node-fetch');
 
 async function getLastObject(obj)
 {
@@ -21,17 +12,17 @@ async function getLastObject(obj)
 
 async function apiRequest(url, type){
     return fetch(url + type)
-    .then((response)=>{
-        return toJson(response.body); 
-    }); 
+    .then(res=> res.json())
+    .then(body => body).catch(err => 'Cannot fetch US data'); 
 }
 
 async function getStats()
 {  
     const baseUrl = "https://api.covid19api.com/total/country/united-states/status/"; 
-    let totalPositiveCases = await apiRequest(`${baseUrl}`, 'confirmed');
+    let totalPositiveCases = await apiRequest(baseUrl, 'confirmed');
     totalPositiveCases = await getLastObject(totalPositiveCases);  
-    let totalDeaths = await apiRequest(`${baseUrl}`,'deaths');
+    console.log(totalPositiveCases);
+    let totalDeaths = await apiRequest(baseUrl,'deaths');
     totalDeaths = await getLastObject(totalDeaths); 
 
     return {
@@ -45,7 +36,6 @@ async function getStats()
 async function setStats(doc, sheetId)
 {
     let sheet = doc.sheetsById[sheetId];
-
     await getStats().then((stats) =>
     {
         sheet.addRow({

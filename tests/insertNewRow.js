@@ -2,6 +2,8 @@ const {getLastRow} = require('../src/Api');
 const moment = require('moment'); 
 const api = require('../src/Api');  
 const spreadsheet = require('../src/loadSpreadSheet');
+const should = require('should');
+
 
     describe('Inserting row to Google Spreadsheet', ()=>{
         before(async()=>{
@@ -12,6 +14,6 @@ const spreadsheet = require('../src/loadSpreadSheet');
             const doc = await spreadsheet.loadInfo(); 
             const LastRow = await getLastRow(doc, 1861459331); 
             const today = moment().format("MM/DD/YYYY");
-                LastRow.Date.should.be.equal(today);
+              should(LastRow.Date).be.equal(today);
         }); 
     });
