@@ -16,8 +16,8 @@ async function getRowCount(doc, sheetId){
 
 async function getLastRow(doc, sheetId){
     const rows = await getRows(doc,sheetId); 
-    const rowCount = await getRowCount(doc,sheetId); 
-    return rows[rowCount - 1];
+    const rowCount = await getRowCount(doc,sheetId);
+    return rows[rowCount - 2];
 }
 
 async function setStats(doc, state, sheetId)
