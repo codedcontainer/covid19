@@ -21,7 +21,6 @@ async function getStats()
     const baseUrl = "https://api.covid19api.com/total/country/united-states/status/"; 
     let totalPositiveCases = await apiRequest(baseUrl, 'confirmed');
     totalPositiveCases = await getLastObject(totalPositiveCases);  
-    console.log(totalPositiveCases);
     let totalDeaths = await apiRequest(baseUrl,'deaths');
     totalDeaths = await getLastObject(totalDeaths); 
 
