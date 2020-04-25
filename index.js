@@ -9,8 +9,9 @@ const spreadsheet = require('./src/loadSpreadSheet');
     US.setStats(doc, 0); 
     IN.setStats(doc, 953330401);
 
-    sheets.forEach(sheet => {
-         await api.setStats(doc, sheet.state, sheet.sheetId); 
-     }); 
+    for(const sheet of sheets){
+        api.setStats(doc, sheet.state, sheet.sheetId); 
+    }
+
     }); 
 })();
