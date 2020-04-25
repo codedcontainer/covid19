@@ -12,6 +12,8 @@ Grabs stats about number of cases, deaths, and more for the United States and in
 8. Go to document share > share with service email address
 9. If you need to update with past records go to http://coronavirusapi.com/, find state, and save as CSV. 
 	- If you open this in Excel you can convert the Unix time to simple date (use resource link below)
+## Tips ##
+- Google sheets has a 40,000 query limit per day
 
 ## Resources ##
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`

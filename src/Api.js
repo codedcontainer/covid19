@@ -57,9 +57,8 @@ async function filterRecords(jsonArray) {
     return new Promise((resolve, reject) => {
         if (jsonArray.length > 1) {
             const reverse = _.reverse(jsonArray);
-            let unique = _.uniqBy(reverse, "date");
+            let unique = _.uniqBy(reverse, "Date");
             unique = _.reverse(unique);
-
             resolve(unique);
         }
         else {
@@ -113,6 +112,8 @@ async function insertMultiple(doc, state, sheetId) {
     const sheetRows = await this.getAllRows(doc, state, sheetId);
     const diff = _.differenceBy(filtered, sheetRows, "Date");
     const sheet = doc.sheetsById[sheetId];
+
+     
 
     return new Promise((resolve, reject)=>{
         if(diff.length > 0){

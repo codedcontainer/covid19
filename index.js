@@ -9,6 +9,8 @@ const spreadsheet = require('./src/loadSpreadSheet');
      US.setStats(doc, 0); 
      IN.setStats(doc, 953330401);
 
+   api.insertMultiple(doc, "AR", 163775774)
+
     for(const sheet of sheets){
         api.insertMultiple(doc, sheet.state, sheet.sheetId); 
     }

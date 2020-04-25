@@ -12,7 +12,7 @@ describe('Add list of past records', ()=>{
   
     it('loop through each filted list and insert', async()=>{
         const doc = await spreadsheet.loadInfo(); 
-        await state.insertMultiple(doc, "AL", 1253988439);  
+        await state.insertMultiple(doc, "AR", 163775774);  
     });
 
 });
