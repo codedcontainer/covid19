@@ -2,6 +2,7 @@ const csv = require('csvtojson');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const _ = require('lodash');
+const async = require('async'); 
 
 async function getRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
@@ -91,8 +92,13 @@ async function getAllRecords(state) {
             }));
     });
 }
+function timeout(ms){
+    return new Promise((resolve,reject)=>{
+        setTimeout(resolve, ms); 
+    }); 
+}
 
-async function getAllRows(doc, state, sheetId) {
+async function getAllRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
     const rows = await sheet.getRows();
 
@@ -109,23 +115,26 @@ async function getAllRows(doc, state, sheetId) {
 async function insertMultiple(doc, state, sheetId) {
     const records = await this.getAllRecords(state);
     const filtered = await this.filterRecords(records);
-    const sheetRows = await this.getAllRows(doc, state, sheetId);
+    const sheetRows = await this.getAllRows(doc, sheetId);
     const diff = _.differenceBy(filtered, sheetRows, "Date");
     const sheet = doc.sheetsById[sheetId];
-
-     
-
     return new Promise((resolve, reject)=>{
         if(diff.length > 0){
-            for (const record of diff) {
-                sheet.addRow({
-                    "Date": record.Date,
-                    "Cases": record.Positive,
-                    "Deaths": record.Deaths,
-                    "Tested": record.Tested
-                });
-            }
-            resolve(); 
+                var i = 0; 
+                function myLoop(){
+                    setTimeout(() => {
+                            sheet.addRow({
+                                "Date": diff[i].Date,
+                                "Cases": diff[i].Positive,
+                                "Deaths": diff[i].Deaths,
+                                "Tested": diff[i].Tested
+                            });
+                        i++; 
+                        if(i <= diff.length-1) myLoop(); 
+                    }, 30000);
+                }
+                myLoop();  
+                resolve(); 
         }
         else{
             reject('No records to insert'); 
