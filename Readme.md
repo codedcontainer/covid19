@@ -16,6 +16,7 @@ Grabs stats about number of cases, deaths, and more for the United States and in
 - Google sheets has a 40,000 query limit per day
 
 ## Resources ##
+- [Add delay to JS loop](https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop)
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
 	- `sudo apt install nodejs`
 - Installing on Raspberry Pi: `apt-get install chromium-chromedriver`
