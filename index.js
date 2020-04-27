@@ -7,7 +7,7 @@ const async = require('async');
 
 (async () => {
     spreadsheet.loadInfo().then((doc) => {
-        US.setStats(doc, 0); 
+        //US.setStats(doc, 0); 
         //IN.setStats(doc, 953330401);
 
         var i = 0;

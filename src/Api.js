@@ -68,18 +68,16 @@ async function filterRecords(jsonArray) {
     });
 }
 
-
 async function formatRecords(jsonArray) {
     return jsonArray.map((value) => {
         return {
             Date: moment.unix(value.seconds_since_Epoch).format("MM/DD/YYYY"),
             Tested: value.tested,
-            Positive: value.positive,
+            Cases: value.positive,
             Deaths: value.deaths
         }
     });
 }
-
 
 async function getAllRecords(state) {
     return new Promise((resolve, reject) => {
@@ -87,36 +85,38 @@ async function getAllRecords(state) {
             .then(res => res.text())
             .then(body => csvToJson(body).then((json) => {
                 formatRecords(json).then((records) => {
-                    resolve(records);
+                    const sort = _.orderBy(records, (obj)=>{
+                        return new Date(obj.Date); 
+                    }); 
+                    resolve(sort);
                 });
             }));
     });
-}
-function timeout(ms){
-    return new Promise((resolve,reject)=>{
-        setTimeout(resolve, ms); 
-    }); 
 }
 
 async function getAllRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
     const rows = await sheet.getRows();
-
-    return rows.map((value) => {
+    const rowsFormat = rows.map((value) => {
         return {
-            Date: value.Date,
+            Date: moment(value.Date).format("MM/DD/YYYY"),
             Tested: value.Tested,
             Cases: value.Cases,
             Deaths: value.Deaths
         }
-    });
+    }); 
+    const orderRows = _.orderBy(rowsFormat, (obj)=>{
+        return new Date(obj.Date); 
+    })
+    return orderRows; 
 }
+
 
 async function insertMultiple(doc, state, sheetId) {
     const records = await this.getAllRecords(state);
     const filtered = await this.filterRecords(records);
     const sheetRows = await this.getAllRows(doc, sheetId);
-    const diff = _.differenceBy(filtered, sheetRows, "Date");
+    const diff = _.differenceWith(filtered, sheetRows, _.isEqual);
     const sheet = doc.sheetsById[sheetId];
     return new Promise((resolve, reject)=>{
         if(diff.length > 0){
@@ -131,7 +131,7 @@ async function insertMultiple(doc, state, sheetId) {
                             });
                         i++; 
                         if(i <= diff.length-1) myLoop(); 
-                    }, 30000);
+                    }, 5000);
                 }
                 myLoop();  
                 resolve(); 
