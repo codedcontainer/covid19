@@ -2,7 +2,6 @@ const csv = require('csvtojson');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const _ = require('lodash');
-const async = require('async');
 
 async function getRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
@@ -55,15 +54,12 @@ async function getTodaysRecord(state) {
 }
 
 async function filterRecords(jsonArray) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         if (jsonArray.length > 1) {
             const reverse = _.reverse(jsonArray);
             let unique = _.uniqBy(reverse, "Date");
             unique = _.reverse(unique);
             resolve(unique);
-        }
-        else {
-            reject("There are no records to filter");
         }
     });
 }
@@ -112,7 +108,7 @@ async function getAllRows(doc, sheetId) {
 }
 
 
-async function insertMultiple(doc, state, sheetId) {
+async function insertMultiple(doc, state, sheetId, limitSeconds) {
     const records = await this.getAllRecords(state);
     const filtered = await this.filterRecords(records);
     const sheetRows = await this.getAllRows(doc, sheetId);
@@ -121,7 +117,7 @@ async function insertMultiple(doc, state, sheetId) {
 
     if (diff.length > 0) {
         var i = 0;
-        function myLoop() {
+        function myLoop(limitSeconds) {
             setTimeout(() => {
                 sheet.addRow({
                     "Date": diff[i].Date,
@@ -131,9 +127,9 @@ async function insertMultiple(doc, state, sheetId) {
                 });
                 i++;
                 if (i <= diff.length - 1) myLoop();
-            }, 5000);
+            }, limitSeconds );
         }
-        myLoop();
+        myLoop(limitSeconds);
     }
 }
 
