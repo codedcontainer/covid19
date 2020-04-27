@@ -16,6 +16,8 @@ Grabs stats about number of cases, deaths, and more for the United States and in
 - Google sheets has a 40,000 query limit per day
 
 ## Resources ##
+-[Lodash: how to sort by array of dates](https://stackoverflow.com/questions/26930692/lo-dash-sortby-array-of-dates-in-string-format)
+-[_.isEqual reporting diff when there is none](https://stackoverflow.com/questions/32516519/isequal-reporting-a-difference-when-there-is-none)
 - [Add delay to JS loop](https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop)
 - Installing node on Raspberry Pi: `curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -`
 	- `sudo apt install nodejs`
