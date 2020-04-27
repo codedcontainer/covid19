@@ -107,30 +107,28 @@ async function getAllRows(doc, sheetId) {
     return orderRows;
 }
 
+const sleep = ms =>{
+    return new Promise(resolve => setTimeout(resolve, ms)) 
+}
 
-async function insertMultiple(doc, state, sheetId, limitSeconds) {
+async function insertMultiple(doc, state, sheetId) {
     const records = await this.getAllRecords(state);
     const filtered = await this.filterRecords(records);
     const sheetRows = await this.getAllRows(doc, sheetId);
     const diff = _.differenceWith(filtered, sheetRows, _.isEqual);
     const sheet = doc.sheetsById[sheetId];
-
     if (diff.length > 0) {
-        var i = 0;
-        function myLoop(limitSeconds) {
-            setTimeout(() => {
-                sheet.addRow({
-                    "Date": diff[i].Date,
-                    "Cases": diff[i].Cases,
-                    "Deaths": diff[i].Deaths,
-                    "Tested": diff[i].Tested
-                });
-                i++;
-                if (i <= diff.length - 1) myLoop();
-            }, limitSeconds );
+        for(var a = 0; a<=diff.length -1; a++){
+            await sheet.addRow({
+                "Date": moment(diff[a].Date).format("MM/DD/YYYY"),
+                "Cases": diff[a].Cases,
+                "Deaths": diff[a].Deaths,
+                "Tested": diff[a].Tested
+            });
+            console.log(`${state} - Added Row`);
+            await sleep(5000); 
         }
-        myLoop(limitSeconds);
-    }
+}
 }
 
 
