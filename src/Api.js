@@ -95,7 +95,7 @@ async function getAllRows(doc, sheetId) {
     const rows = await sheet.getRows();
     const rowsFormat = rows.map((value) => {
         return {
-            Date: moment(value.Date).format("MM/DD/YYYY"),
+            Date: moment(value.Date, "MM/DD/YYYY").format("MM/DD/YYYY"),
             Tested: value.Tested,
             Cases: value.Cases,
             Deaths: value.Deaths
@@ -120,7 +120,7 @@ async function insertMultiple(doc, state, sheetId) {
     if (diff.length > 0) {
         for(var a = 0; a<=diff.length -1; a++){
             await sheet.addRow({
-                "Date": moment(diff[a].Date).format("MM/DD/YYYY"),
+                "Date": moment(diff[a].Date, "MM/DD/YYYY").format("MM/DD/YYYY"),
                 "Cases": diff[a].Cases,
                 "Deaths": diff[a].Deaths,
                 "Tested": diff[a].Tested
