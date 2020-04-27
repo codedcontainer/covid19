@@ -6,21 +6,14 @@ const spreadsheet = require('./src/loadSpreadSheet');
 const async = require('async');
 
 (async () => {
-    spreadsheet.loadInfo().then((doc) => {
+    const doc = await spreadsheet.loadInfo(); 
+  
         //US.setStats(doc, 0); 
         //IN.setStats(doc, 953330401);
 
-        var i = 0;
-        function myLoop() {
-            setTimeout(() => {
-                api.insertMultiple(doc, sheets[i].state, sheets[i].sheetId).then(()=>{
-                    console.log(sheets[i].state); 
-                    i++
-                    if (i <= sheets.length -1) myLoop();
-                }); 
-               
-            }, 10000);
-        }
-        myLoop();
-    });
+        for(var a = 0; a<=sheets.length -1; a++){
+            await api.insertMultiple(doc, sheets[a].state, sheets[a].sheetId); 
+            console.log(sheets[a].state); 
+        }  
+  
 })();
