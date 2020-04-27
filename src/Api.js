@@ -2,7 +2,7 @@ const csv = require('csvtojson');
 const fetch = require('node-fetch');
 const moment = require('moment');
 const _ = require('lodash');
-const async = require('async'); 
+const async = require('async');
 
 async function getRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
@@ -85,9 +85,9 @@ async function getAllRecords(state) {
             .then(res => res.text())
             .then(body => csvToJson(body).then((json) => {
                 formatRecords(json).then((records) => {
-                    const sort = _.orderBy(records, (obj)=>{
-                        return new Date(obj.Date); 
-                    }); 
+                    const sort = _.orderBy(records, (obj) => {
+                        return new Date(obj.Date);
+                    });
                     resolve(sort);
                 });
             }));
@@ -104,11 +104,11 @@ async function getAllRows(doc, sheetId) {
             Cases: value.Cases,
             Deaths: value.Deaths
         }
-    }); 
-    const orderRows = _.orderBy(rowsFormat, (obj)=>{
-        return new Date(obj.Date); 
+    });
+    const orderRows = _.orderBy(rowsFormat, (obj) => {
+        return new Date(obj.Date);
     })
-    return orderRows; 
+    return orderRows;
 }
 
 
@@ -118,35 +118,30 @@ async function insertMultiple(doc, state, sheetId) {
     const sheetRows = await this.getAllRows(doc, sheetId);
     const diff = _.differenceWith(filtered, sheetRows, _.isEqual);
     const sheet = doc.sheetsById[sheetId];
-    return new Promise((resolve, reject)=>{
-        if(diff.length > 0){
-                var i = 0; 
-                function myLoop(){
-                    setTimeout(() => {
-                            sheet.addRow({
-                                "Date": diff[i].Date,
-                                "Cases": diff[i].Positive,
-                                "Deaths": diff[i].Deaths,
-                                "Tested": diff[i].Tested
-                            });
-                        i++; 
-                        if(i <= diff.length-1) myLoop(); 
-                    }, 5000);
-                }
-                myLoop();  
-                resolve(); 
+
+    if (diff.length > 0) {
+        var i = 0;
+        function myLoop() {
+            setTimeout(() => {
+                sheet.addRow({
+                    "Date": diff[i].Date,
+                    "Cases": diff[i].Cases,
+                    "Deaths": diff[i].Deaths,
+                    "Tested": diff[i].Tested
+                });
+                i++;
+                if (i <= diff.length - 1) myLoop();
+            }, 5000);
         }
-        else{
-            reject('No records to insert'); 
-        }
-    });
+        myLoop();
+    }
 }
 
 
 async function insertSingle(doc, state, sheetId) {
     let record = await getTodaysRecord(state);
     const sheet = doc.sheetsById[sheetId];
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
         if (record != null) {
             sheet.addRow({
                 "Date": moment().format('MM/DD/YYYY'),
@@ -154,13 +149,13 @@ async function insertSingle(doc, state, sheetId) {
                 "Deaths": record.Deaths,
                 "Tested": record.Tested
             });
-            resolve(); 
+            resolve();
         }
-        else{
+        else {
             reject("No record to insert");
         }
     });
-    
+
 }
 
 async function csvToJson(text) {
