@@ -2,7 +2,7 @@
   "id": "8ed72aa8-e055-452d-a340-77db85d9e164",
   "version": "2.0",
   "name": "Covid19",
-  "url": "https://coronavirus.iowa.gov/pages/access",
+  "url": "https://www.coronavirus.in.gov/map-test/test.htm",
   "tests": [{
     "id": "16d2df94-e610-46f9-b9fb-a819962d7963",
     "name": "IL",
@@ -45,6 +45,13 @@
       "target": "https://www.coronavirus.in.gov/map-test/test.htm",
       "targets": [],
       "value": ""
+    }, {
+      "id": "baf2ed98-af52-4340-821c-7a029b5bd930",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.m-stats-cards-card-wrapper:nth-child(1) .h1",
+      "targets": [],
+      "value": "10000"
     }, {
       "id": "9d444d3b-4d97-44ae-94b3-5595033428c1",
       "comment": "",
@@ -377,6 +384,6 @@
     "timeout": 300,
     "tests": ["16d2df94-e610-46f9-b9fb-a819962d7963"]
   }],
-  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus", "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home", "https://mn.gov/covid19/", "https://coronavirus.iowa.gov/pages/access"],
+  "urls": ["https://coronavirus.illinois.gov/s/", "https://www.michigan.gov/Coronavirus", "https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home", "https://mn.gov/covid19/", "https://coronavirus.iowa.gov/pages/access", "https://www.coronavirus.in.gov/map-test/test.htm"],
   "plugins": []
 }
