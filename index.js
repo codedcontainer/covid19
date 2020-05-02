@@ -6,9 +6,8 @@ const spreadsheet = require('./src/loadSpreadSheet');
 
 (async () => {
     const doc = await spreadsheet.loadInfo(); 
-        //US.setStats(doc, 0); 
-        //IN.setStats(doc, 953330401);
-
+        US.setStats(doc, 0); 
+        IN.setStats(doc, 953330401);
         for(var a = 0; a<=sheets.length-1; a++){
             await api.insertMultiple(doc, sheets[a].state, sheets[a].sheetId); 
         }          
