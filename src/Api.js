@@ -94,11 +94,14 @@ async function getAllRows(doc, sheetId) {
     const sheet = doc.sheetsById[sheetId];
     const rows = await sheet.getRows();
     const rowsFormat = rows.map((value) => {
+
+
+
         return {
             Date: moment(value.Date, "MM/DD/YYYY").format("MM/DD/YYYY"),
-            Tested: value.Tested,
-            Cases: value.Cases,
-            Deaths: value.Deaths
+            Tested: value.Tested == undefined ? "" : value.Tested,
+            Cases: value.Cases == undefined ? "" : value.Cases,
+            Deaths: value.Deaths == undefined ? "" : value.Deaths
         }
     });
     const orderRows = _.orderBy(rowsFormat, (obj) => {
